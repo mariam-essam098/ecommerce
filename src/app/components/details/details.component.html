@@ -1,0 +1,34 @@
+<section class="my-5 w-75 mx-auto" *ngIf="productDetails">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <!-- Owl Carousel for product images -->
+        <owl-carousel-o [options]="detailsSlider">
+          <ng-container *ngFor="let path of productDetails.images">
+            <ng-template carouselSlide>
+              <img [src]="path" alt="Product Image Details">
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+      <div class="col-md-8">
+        <div class="item">
+          <!-- Display product details -->
+          <h3 class="fw-bold">{{ productDetails.title }}</h3>
+          <p class="text-muted small">{{ productDetails.description }}</p>
+          <span class="text-main">{{ productDetails.category.name }}</span>
+          <div class="hstack justify-content-between">
+            <span>{{ productDetails.price + ' EGP' }}</span>
+            <p class="mb-0"><i class="fas fa-star rating-color"></i>{{productDetails.ratingsAverage}}</p>
+          </div>
+          <!-- Button for adding to cart -->
+          <div class="hstack justify-content-between">
+            <button #addBtn class="main-btn w-75 my-2" (click)="addProduct(productDetails._id, addBtn)">Add To Cart</button>
+            <i #wishlistBtn role="button" *ngIf="!wishlistArray.includes($any(productDetails._id))" class="fa-regular fa-heart fa-2x" (click)="addedToWishlist(productDetails._id, wishlistBtn)"></i>
+            <i #wishlistBtn role="button" *ngIf="wishlistArray.includes($any(productDetails._id))" class="fa-solid fa-heart fa-2x text-danger" (click)="removeWishListItem(productDetails._id, wishlistBtn)"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+<section class="w-75 mx-auto rounded shadow p-4 bg-main-light marginY" *ngIf="ordersDetails;else msg">
+  <button routerLink="/home" class="btn btn-outline-secondary my-3">Back To Home</button>
+  <h2 class="text-center fw-bold text-main">All Orders</h2>
+  <div class="row border rounded m-2 p-2" *ngFor="let order of ordersDetails | slice: 0:3 ; let i = index">
+    <h3 class="h2 badge bg-main">Order : {{i + 1}}</h3>
+
+    <div class="px-3 d-flex align-items-center mt-3 phone-response" *ngFor="let item of ordersDetails[i].cartItems; let j = index">
+      <div class="col-sm-4">
+        <img class="w-100 pe-3" [src]="ordersDetails[i].cartItems[j].product.imageCover" alt="">
+      </div>
+      <div class="col-sm-8">
+        <div class="product-info">
+          <div class="d-flex flex-column">
+            <h3 class="text-main h5">{{ordersDetails[i].cartItems[j].product.title | cutText: 3}}</h3>
+            <span class="fw-bold h6">Quantity: {{ordersDetails[i].cartItems[j].count}}</span>
+            <span class="fw-bold h6">Price: {{ordersDetails[i].cartItems[j].price + ' EGP'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+
+      <div class="border border-dark rounded p-1 my-3">
+        <h3 class="text-center h4 mb-0 fw-bold text-dark">Order Status</h3>
+        <hr>
+        <p class="mb-2 small ps-3">Is Delivered: <span [ngClass]="{ 'badge bg-success': ordersDetails[i].isDelivered, 'badge bg-danger': !ordersDetails[i].isDelivered }">{{ ordersDetails[i].isDelivered ? 'Yes' : 'No' }}</span></p>
+        <p class="mb-2 small ps-3">Is Paid: <span [ngClass]="{ 'badge': true, 'bg-success': ordersDetails[i].isPaid, 'bg-danger': !ordersDetails[i].isPaid}">{{ ordersDetails[i].isPaid ? 'Yes' : 'No' }}</span></p>
+        <p class="mb-2 small ps-3">Payment Method Type: <span class="badge bg-main">{{ordersDetails[i].paymentMethodType}}</span></p>
+        <p class="mb-2 small ps-3">Total Order Price: <span class="badge bg-main">{{ordersDetails[i].totalOrderPrice + ' EGP'}}</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #msg>
+  <h2 class="text-center my-5">Your Orders is Empty...</h2>
+</ng-template>

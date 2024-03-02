@@ -1,0 +1,25 @@
+<section class="py-5 my-4" *ngIf="brandsData.length > 0">
+  <div class="container">
+    <h2 class="text-center py-3 text-main fw-bold">Shop Brands</h2>
+    <div class="row g-3">
+      <div class="col-sm-12 col-md-3" *ngFor="let item of brandsData | paginate: { id: 'productPaginate',
+      itemsPerPage: pageSize,
+      currentPage: curentPage,
+      totalItems: total }">
+        <div class="p-2 cursor-pointer product" [routerLink]="['/brandsDetails', item._id]" >
+          <img class="w-100" [src]="item.image" [alt]="item.name">
+          <hr>
+          <h3 class="pt-2 text-center small fw-bold text-main">{{item.name}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mt-5">
+    <pagination-controls id="productPaginate" (pageChange)="pageChanged($event)"
+      (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9" [directionLinks]="true" [autoHide]="true"
+      [responsive]="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
+  </div>
+</section>

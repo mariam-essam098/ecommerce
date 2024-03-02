@@ -1,0 +1,11 @@
+@media screen and (max-width: 576px) {
+  .main-btn {
+    width: 100%;
+  }
+  .content {
+    &, & p, & .btn-group {
+      margin: 1rem 0;
+    }
+  }
+
+}

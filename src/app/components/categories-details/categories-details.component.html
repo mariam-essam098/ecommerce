@@ -1,0 +1,14 @@
+<section class="marginY p-4 w-75 mx-auto shadow bg-main-light rounded" *ngIf="categoriesDetails">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <div class="item">
+          <img class="w-100" [src]="categoriesDetails.image" [alt]="categoriesDetails.name">
+        </div>
+      </div>
+      <div class="col-md-8 mt-5">
+        <h2 class="fw-bold text-main">{{categoriesDetails.name}}</h2>
+      </div>
+    </div>
+  </div>
+</section>

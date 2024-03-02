@@ -1,0 +1,7 @@
+<app-nav-blank></app-nav-blank>
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>
+
+<button [ngClass]="{ 'show': showButton, 'hide': !showButton }" (click)="backToTop()" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></button>

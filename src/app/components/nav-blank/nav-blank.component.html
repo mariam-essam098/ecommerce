@@ -1,0 +1,65 @@
+<nav #navbar class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="./assets/images/freshcart-logo.svg" alt="fresh cart logo">
+    </a>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars fs-2"></i>
+    </button>
+    <div #closeNabar class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav me-auto gap-3 mt-2 mt-lg-0 text-center">
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeNavBar()" routerLinkActive="active-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeNavBar()" routerLinkActive="active-link" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeNavBar()" routerLinkActive="active-link"
+            routerLink="/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="closeNavBar()" routerLinkActive="active-link" routerLink="/brands">Brands</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto align-items-center gap-1">
+        <li class="nav-item dropdown text-center">
+          <a class="nav-link dropdown-toggle p-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user fa-xl"></i>
+          </a>
+          <ul class="dropdown-menu p-1 text-center max-w">
+            <li><a class="nav-link" (click)="closeNavBar()" routerLinkActive="active-link"
+                routerLink="/update-password">Update Password</a></li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="closeNavBar()" routerLinkActive="active-link" routerLink="/allorders">My
+                Orders</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item pe-2">
+          <a class="nav-link bg-transparent text-black-50 position-relative" (click)="closeNavBar()"
+            routerLink="/wishlist">
+            <i class="fa-solid fa-heart fa-2x"></i>
+            <span class="badge bg-info position-absolute top-0 end-0">{{wishListCount}}</span>
+          </a>
+        </li>
+        <li class="nav-item pe-2">
+          <a class="nav-link bg-transparent text-black-50 position-relative" (click)="closeNavBar()" routerLink="/cart">
+            <i class="fas fa-cart-shopping fa-2x"></i>
+            <span class="badge bg-main position-absolute top-0 end-0">{{cartCount}}</span>
+          </a>
+        </li>
+        <li class="nav-item gap-3 hover me-2 hstack justify-content-center my-sm-3 my-lg-0 fs-4">
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-linkedin"></i>
+        </li>
+        <li class="nav-item py-2" (click)="signOut(); closeNavBar()">
+          <span class="btn btn-outline-danger" role="button">Sign Out</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

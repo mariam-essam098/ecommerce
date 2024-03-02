@@ -1,0 +1,15 @@
+.marginY {
+  margin: 5rem 0;
+}
+
+@media screen and (max-width: 576px) {
+  .phone-response {
+    padding: 0!important;
+  }
+  section {
+    width: 100%!important;
+  }
+  .col-sm-4 {
+    width: 40%!important;
+  }
+}

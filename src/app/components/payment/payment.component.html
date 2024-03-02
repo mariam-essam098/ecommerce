@@ -1,0 +1,37 @@
+<form class="w-75 mx-auto rounded shadow p-3 bg-main-light marginY" [formGroup]="checkForm" (ngSubmit)="handleForm()">
+  <h2 class="text-center py-3 text-main fw-bold">Fill Your Details</h2>
+  <div class="formItem">
+    <label for="details">Details :</label>
+    <input type="text" formControlName="details" id="details" class="form-control my-3">
+  </div>
+  <div class="formItem">
+    <label for="city">City :</label>
+    <input type="text" formControlName="city" id="city" class="form-control my-3">
+  </div>
+  <div class="formItem">
+    <label for="phone">Phone :</label>
+    <input
+      formControlName="phone"
+      name="phone"
+      id="phone"
+      type="tel"
+      class="form-control my-2"
+    />
+    <div
+      *ngIf="
+        (checkForm.get('phone')?.touched ||
+          checkForm.get('phone')?.value.length > 0) &&
+        checkForm.get('phone')?.errors
+      "
+      class="alert alert-danger"
+    >
+      <p *ngIf="checkForm.get('phone')?.getError('required')">
+        Required
+      </p>
+      <p *ngIf="checkForm.get('phone')?.getError('pattern')">
+      Only Egyptian Phone Number
+      </p>
+    </div>
+  </div>
+  <button class="main-btn" (click)="handleForm()">CheckOut</button>
+</form>

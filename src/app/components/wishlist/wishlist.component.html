@@ -1,0 +1,29 @@
+<section class="w-75 mx-auto rounded shadow p-4 bg-main-light marginY" *ngIf="wishListData;else msg">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="fw-bold text-main text-center">WishList</h2>
+  </div>
+  <button routerLink="/home" class="btn btn-outline-secondary my-3">Back To Home</button>
+  <div class="row border-bottom py-3 align-items-center" *ngFor="let item of wishListData; let i = index">
+    <div class="col-md-4">
+      <img class="w-100" [src]="item.imageCover" [alt]="item.title">
+    </div>
+    <div class="col-md-8 pt-2">
+      <div>
+        <h3 class="h6 fw-bold">{{item.title}}</h3>
+        <h3 class="h6 fw-bold text-main">{{item?.category?.name}}</h3>
+        <h4 class="small text-muted">{{item?.brand?.name}}</h4>
+        <p class="text-main">{{item.price +' EGP'}}</p>
+        <button #rmBtn (click)="removeItem(item._id, rmBtn)" class="btn p-0 m-0"><i class="fas fa-trash rmBtn">
+            Remove</i></button>
+      </div>
+      <div class="d-flex justify-content-between">
+        <button #addBtn class="main-btn w-75 my-3" (click)="addProduct(wishListData[i], addBtn)">Add To Cart</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<ng-template #msg>
+  <h2 class="text-center marginY">Your WishList is Empty...</h2>
+</ng-template>

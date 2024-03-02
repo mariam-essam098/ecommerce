@@ -1,0 +1,14 @@
+<section class="py-5 my-4" *ngIf="categoriesData.length > 0">
+  <div class="container">
+    <h2 class="text-center py-3 text-main fw-bold">Shop Categories</h2>
+    <div class="row g-3">
+      <div class="col-sm-12 col-md-4" *ngFor="let item of categoriesData">
+        <div class="p-2 cursor-pointer product" [routerLink]="['/categoriesDetails', item._id]">
+          <img class="w-100 object-fit-cover" height="300" [src]="item.image" [alt]="item.name">
+          <hr>
+          <h3 class="text-main pt-2 text-center fw-bold">{{item.name}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
